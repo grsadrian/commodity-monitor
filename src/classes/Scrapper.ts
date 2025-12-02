@@ -1,8 +1,9 @@
 import puppeteer, { Browser, Page } from "puppeteer";
-import { config } from "../config.js";
+import { config, indicator } from "../config/config.js";
 
 export class Scrapper {
   url = config.baseUrl;
+  indicators = indicator
   browser!: Browser;
   page!: Page;
 
