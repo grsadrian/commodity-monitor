@@ -8,7 +8,7 @@ export interface Indicator {
 }
 
 export const config: Config = {
-  baseUrl: "https://www.cepea.org.br/indicador",
+  baseUrl: "https://www.cepea.org.br/br/indicador/",
 };
 
 export const indicator: Indicator[] = [
