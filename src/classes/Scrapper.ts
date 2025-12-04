@@ -7,7 +7,7 @@ export class Scrapper {
   indicators = indicator;
   processor = new ProcessData();
   parsedData!: ParsedData[];
-  rawData?: string;
+  rawData!: string[][];
   browser!: Browser;
   page!: Page;
 
@@ -19,13 +19,18 @@ export class Scrapper {
   }
 
   async scrap(): Promise<void> {
-    for (let i = 0; i++; this.indicators.length) {
+    for (let i = 0; this.indicators.length; i++) {
       await this.page.goto(`${this.url}${this.indicators[0].route}.aspx`);
       this.rawData = await this.page.evaluate(() => {
-        let element = document.querySelector("tbody");
-        return element?.innerHTML;
+        const trs = Array.from(document.querySelectorAll("tr"));
+        return trs.map((tr) => {
+          const tds = Array.from(tr.querySelectorAll("td"));
+          return tds.map((td) => td.textContent?.trim() || "");
+        });
       });
-      this.processor.processData(this.rawData);
+      this.parsedData.push(
+        this.processor.processData(this.rawData, this.indicators[0].name)
+      );
     }
   }
 
