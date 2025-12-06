@@ -1,4 +1,5 @@
 import isWeekDay from "../utils/isWeekDay.js";
+import { parseBRLCurrency } from "../utils/parseBRLCurrency.js";
 
 export interface ParsedData {
     commodity: string;
@@ -32,10 +33,10 @@ export class ProcessData {
             commodity: commodity,
             indicators: {
                 date: this.filteredData[0][0],
-                value: parseFloat(this.filteredData[0][1]),
-                dailyChange: parseFloat(this.filteredData[0][2]),
-                monthlyChange: parseFloat(this.filteredData[0][3]),
-                dollarValue: parseFloat(this.filteredData[0][4]),
+                value: parseBRLCurrency(this.filteredData[0][1]),
+                dailyChange: parseBRLCurrency(this.filteredData[0][2].replace("%","")),
+                monthlyChange: parseBRLCurrency(this.filteredData[0][3].replace("%","")),
+                dollarValue: parseBRLCurrency(this.filteredData[0][4]),
             },
         };
     }
