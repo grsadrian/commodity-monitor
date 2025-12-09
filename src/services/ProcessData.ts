@@ -17,7 +17,7 @@ export class ProcessData {
     constructor() {}
 
     processData(rawData: string[][], commodity: string): ParsedData {
-        let today: any = new Date(-1);
+        let today: any = new Date();
         if (isWeekDay(today)) {
             today = today.toLocaleDateString();
             this.filteredData = rawData.filter((row) => {
