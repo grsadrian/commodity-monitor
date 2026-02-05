@@ -6,7 +6,7 @@ O projeto faz requisições automáticas, processa o conteúdo HTML da página, 
 - **Node.js**
 - **TypeScript**
 - **[Puppeteer](https://pptr.dev/) (interação com browser)**
-- **[cf-clearence scrapper](https://github.com/ZFC-Digital/cf-clearance-scraper) (script Python para bypass em verificações da Cloudflare)**
+- **[cf-clearence scrapper](https://github.com/Xewdy444/CF-Clearance-Scraper) (script Python para bypass em verificações da Cloudflare)**
 
 ## 🚀 Como utilizá-lo ?
 1. Faça um clone do repositório:
